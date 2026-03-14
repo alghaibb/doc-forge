@@ -124,3 +124,29 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* CTA gradient glow border */
+@keyframes glow-spin {
+  0% {
+    --glow-angle: 0deg;
+  }
+  100% {
+    --glow-angle: 360deg;
+  }
+}
+@property --glow-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.glow-border {
+  background: conic-gradient(
+    from var(--glow-angle),
+    oklch(0.67 0.16 58 / 0.6),
+    oklch(0.88 0.15 92 / 0.2),
+    oklch(0.67 0.16 58 / 0.6),
+    oklch(0.88 0.15 92 / 0.2),
+    oklch(0.67 0.16 58 / 0.6)
+  );
+  animation: glow-spin 4s linear infinite;
+}
